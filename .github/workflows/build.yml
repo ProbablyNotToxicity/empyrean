@@ -1,0 +1,48 @@
+name: Build EXE
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Clean the build directory if it exists
+      - name: Clean build directory
+        run: |
+          if exist build rmdir /s /q build
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10.x'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      # Download UPX
+      - name: Download UPX
+        run: |
+          curl -L -o upx.zip https://github.com/upx/upx/releases/download/v3.96/upx-3.96-win64.zip
+          mkdir -p build/upx-3.96-win64
+          unzip upx.zip -d build/upx-3.96-win64
+
+      # Run builder/main.py to trigger the build
+      - name: Run build script
+        run: python builder/main.py
+
+      # Upload artifact
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: exe-file
+          path: dist/
