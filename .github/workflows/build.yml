@@ -12,10 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # Clean the build directory if it exists
-      - name: Clean build directory
-        run: |
-          if exist build rmdir /s /q build
 
       # Set up Python
       - name: Set up Python
