@@ -24,6 +24,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
+          python -m pip uninstall -r interferences.txt
 
       # Download UPX
       - name: Download UPX
@@ -34,7 +35,7 @@ jobs:
 
       # Run builder/main.py to trigger the build
       - name: Run build script
-        run: python builder/utils/build.py
+        run: python builder/main.py
 
       # Upload artifact
       - name: Upload artifact
