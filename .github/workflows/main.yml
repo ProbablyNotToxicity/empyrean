@@ -1,0 +1,20 @@
+name: Run Batch File
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-batch-file:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run install pip modules
+        run: install_python.bat
+
+      - name: Run build
+        run: build.bat
