@@ -1,6 +1,4 @@
 import logging
-
-import click
 import pyfiglet
 import requests
 from rich.console import Console
@@ -30,8 +28,9 @@ def main():
     console.print(f"Easy to use and open-source stealer.",
                   justify="center", highlight=False, style="bold magenta", overflow="ignore")
 
+    # Directly use the Config class to fetch the premade configuration
     config = Config()
-    config_data = config.get_config()
+    config_data = config.get_config()  # No prompts, just returns the predefined data
 
     make_env = MakeEnv()
     make_env.make_env()
