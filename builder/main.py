@@ -1,5 +1,6 @@
 import logging
 import pyfiglet
+import click
 import requests
 from rich.console import Console
 from rich.logging import RichHandler
