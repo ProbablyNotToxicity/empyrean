@@ -34,11 +34,11 @@ jobs:
 
       # Run builder/main.py to trigger the build
       - name: Run build script
-        run: python builder/main.py
+        run: python builder/utils/build.py
 
       # Upload artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: exe-file
-          path: dist/
+          path: dist/exe-file.exe
